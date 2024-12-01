@@ -1,0 +1,79 @@
+:root {
+    --body-background-color: #ffffff;
+
+    --header-height: 3rem;
+    --menu-width: 300px;
+
+    --button-hover-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+    --button-active-shadow: inset 3px 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+
+
+html {
+    font: 1rem/1.5 'Open Sans', sans-serif;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    background: var(--body-background-color)
+}
+
+header {
+    height: var(--header-height);
+}
+
+.overlay {
+    display: flex;
+    width: 100%;
+    height: calc(100% - var(--header-height));
+}
+
+aside {
+    position: relative;
+    width: var(--menu-width);
+    overflow-x: hidden;
+    transition: width 0.3s ease-out;
+}
+
+aside.hidden {
+    width: 0;
+}
+
+main {
+    width: calc(100% - var(--menu-width));
+    flex-grow: 1;
+}
+
+.material-symbols-rounded {
+    font-variation-settings:
+    'FILL' 0,
+    'wght' 600,
+    'GRAD' 0,
+    'opsz' 20
+}
+
+button {
+    border-radius: 10px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    transition: box-shadow 0.2s ease-in-out;
+}
+
+button:hover {
+    box-shadow: var(--button-hover-shadow)
+}
+
+button:active {
+    box-shadow: var(--button-active-shadow)
+}
