@@ -21,7 +21,7 @@ html {
 
 
 
-button {
+button, input[type="submit"] {
     border-radius: 10px;
     border: none;
     background: none;
@@ -40,7 +40,7 @@ button:active {
 
 input[type="text"], input[type="password"] {
     font-size: 1.1rem;
-    border-radius: 20px;
+    border-radius: 10px;
     border: none;
     outline: 2px solid transparent;
     background: white;
@@ -51,5 +51,17 @@ input[type="text"], input[type="password"] {
 
 input[type="text"]:focus, input[type="password"]:focus {
     outline: 2px solid var(--secondary-color);
+}
+
+input[type="submit"] {
+    font-size: 1.1rem;
+    font-weight: bold;
+    background: var(--semi-transparent-color);
+    cursor: pointer;
+    padding: 10px 20px;
+}
+
+input[type="submit"]:hover {
+    box-shadow: var(--button-hover-shadow);
 }
 

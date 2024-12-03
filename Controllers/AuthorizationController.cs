@@ -7,6 +7,6 @@ public class AuthorizationController : Controller
     [HttpGet("/login")]
     public IActionResult Index()
     {
-        return View();
+        return Ok();
     }
 }
