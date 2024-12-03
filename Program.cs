@@ -24,7 +24,7 @@ public class Program
         
         app.MapControllers();
 
-        app.UseDefaultFiles();
+        // app.UseDefaultFiles();
         app.UseStaticFiles();
 
         app.Run();

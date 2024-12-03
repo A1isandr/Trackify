@@ -1,0 +1,45 @@
+@import "../global-main.css";
+@import "header.css";
+@import "menu.css";
+@import "board.css";
+
+:root {
+    --body-background-color: #ffffff;
+
+    --header-height: 3rem;
+    --menu-width: 300px;
+}
+
+
+
+body {
+    width: 100vw;
+    height: 100vh;
+    background: var(--body-background-color)
+}
+
+header {
+    height: var(--header-height);
+}
+
+.overlay {
+    display: flex;
+    width: 100%;
+    height: calc(100% - var(--header-height));
+}
+
+aside {
+    position: relative;
+    width: var(--menu-width);
+    overflow-x: hidden;
+    transition: width 0.3s ease-out;
+}
+
+aside.hidden {
+    width: 0;
+}
+
+main {
+    width: calc(100% - var(--menu-width));
+    flex-grow: 1;
+}

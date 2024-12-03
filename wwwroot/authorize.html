@@ -1,10 +1,44 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="/styles/authorize/main.css">
+        <title>Title</title>
+    </head>
+    
+    <body>
+        <main>
+            <div class="card">
+<!--                <div class="authorize__methods">-->
+<!--                    -->
+<!--                    -->
+<!--                    <span>-->
+<!--                        Register-->
+<!--                    </span>-->
+<!--                </div>-->
+                
+                <div class="form__container">
+                    <h1>
+                        Welcome back
+                    </h1>
+                    
+                    <form action="/login" method="get">
+                        <div class="input">
+                            <div class="input__container">
+                                <label for="username">Username</label>
+                                <input type="text" name="username" id="username">
+                            </div>
 
-</body>
+                            <div class="input__container">
+                                <label for="password">Password</label>
+                                <input type="password" name="password" id="password">
+                            </div>
+                        </div>
+
+                        <input type="submit" value="Login">
+                    </form>
+                </div>
+            </div>
+        </main>
+    </body>
 </html>

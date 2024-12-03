@@ -1,6 +1,6 @@
-/*========board========*/
+@import "../global-variables.css";
+
 :root {
-    --board-background-color: rgb(154, 201, 255);
     --category-background-color: rgba(255, 255, 255, 0.3);
 }
 
@@ -13,7 +13,7 @@
     height: 100%;
     border-radius: 20px 0 0 0;
     box-shadow: inset 5px 5px 10px rgba(0, 0, 0, 0.1);
-    background: var(--board-background-color);
+    background: var(--primary-color);
     padding: 20px 0 0 0;
     transition: border-radius 0.3s ease-out;
 }
@@ -99,7 +99,7 @@
 }
 
 .category__title:focus {
-    outline: 2px solid black;
+    outline: 2px solid var(--secondary-color);
     background: white;
 }
 
