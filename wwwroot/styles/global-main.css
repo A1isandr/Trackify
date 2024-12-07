@@ -11,12 +11,28 @@ html {
     font: 1rem/1.5 'Open Sans', sans-serif;
 }
 
+body {
+    width: 100vw;
+    height: 100vh;
+}
+
 .material-symbols-rounded {
     font-variation-settings:
             'FILL' 0,
             'wght' 600,
             'GRAD' 0,
             'opsz' 20
+}
+
+
+
+a {
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+a:hover {
+    text-decoration: underline;
 }
 
 
@@ -30,11 +46,11 @@ button, input[type="submit"] {
 }
 
 button:hover {
-    box-shadow: var(--button-hover-shadow)
+    box-shadow: var(--primary-shadow);
 }
 
 button:active {
-    box-shadow: var(--button-active-shadow)
+    box-shadow: var(--primary-inset-shadow);
 }
 
 
@@ -43,14 +59,21 @@ input[type="text"], input[type="password"] {
     border-radius: 10px;
     border: none;
     outline: 2px solid transparent;
-    background: white;
+    box-shadow: var(--primary-shadow);
+    background: var(--white-color);
     resize: none;
-    padding: 10px 20px;
-    transition: outline 0.2s ease-in-out;
+    padding: 10px;
+    transition: outline 0.2s ease-in-out,
+                border-radius 0.2s ease-in-out;
+}
+
+input::placeholder {
+    font: normal 1rem 'Open Sans', sans-serif;
 }
 
 input[type="text"]:focus, input[type="password"]:focus {
     outline: 2px solid var(--secondary-color);
+    border-radius: 15px;
 }
 
 input[type="submit"] {
@@ -59,9 +82,5 @@ input[type="submit"] {
     background: var(--semi-transparent-color);
     cursor: pointer;
     padding: 10px 20px;
-}
-
-input[type="submit"]:hover {
-    box-shadow: var(--button-hover-shadow);
 }
 

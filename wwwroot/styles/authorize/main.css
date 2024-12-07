@@ -1,56 +1,131 @@
-﻿@import "../global-main.css";
-
-body {
-    width: 100vw;
-    height: 100vh;
-}
+@import "../global-main.css";
 
 main {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: grid;
+    grid-template: "header" 30% 
+                   "card" 1fr
+                   / 1fr;
     width: 100%;
     height: 100%;
 }
 
+h1 {
+    grid-area: header;
+    justify-self: center;
+    align-self: center;
+    font-size: 3rem;
+}
+
 .card {
+    grid-area: card;
+    justify-self: center;
+    align-self: flex-start;
+    height: calc-size(auto);
     border-radius: 20px;
-    box-shadow: inset 5px 5px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: var(--secondary-inset-shadow);
     background: var(--primary-color);
     padding: 20px;
+    transition: height 0.3s ease-in-out;
 }
 
 .form__container {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    gap: 20px;
-    width: 25rem;
-    height: 30rem;
-}
-
-h1 {
-    text-align: center;
-}
-
-form {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
     width: 100%;
     height: 100%;
 }
 
-.input__container {
-    margin-bottom: 20px;
+.form__container.hidden {
+    display: none;
+}
+
+#signup-form__container {
+    
+}
+
+h2 {
+    font-size: 1.8rem;
+    margin-bottom: 40px;
+}
+
+form {
+    display: grid;
+    align-items: center;
+    column-gap: 20px;
+    row-gap: 15px;
+    width: 25rem;
+}
+
+#login-form {
+    grid-template: "username" 1fr
+                   "password" 1fr
+                   "button" 2fr
+                   / 1fr;
+}
+
+#signup-form {
+    grid-template: "username" 1fr
+                   "password" 1fr
+                   "password-repeat" 1fr
+                   "button" 2fr
+                   / 1fr;
 }
 
 label {
-    display: block;
-    font-size: 1.1em;
-    margin-bottom: 5px;
+    font-weight: bold;
 }
 
-input[type="text"], input[type="password"] {
-    width: 100%;
+label[for="login-username"] {
+    grid-area: username-label;
 }
+
+label[for="login-password"] {   
+    grid-area: password-label;
+}
+
+#login-username {
+    grid-area: username;
+}
+
+#login-password {
+    grid-area: password;
+}
+
+#signup-username {
+    grid-area: username;
+}
+
+#signup-password {
+    grid-area: password;
+}
+
+#signup-password-repeat {
+    grid-area: password-repeat;
+}
+
+.submit-button {
+    justify-self: center;
+    align-self: flex-end;
+    width: 60%;
+    font-size: 1.1rem;
+    font-weight: bold;
+    background: var(--semi-transparent-color);
+    padding: 10px 20px;
+}
+
+#login-button {
+    grid-area: button;
+}
+
+#signup-button {
+    grid-area: button;
+}
+
+hr {
+    width: 100%;
+    border: 1px solid var(--white-color);
+    margin: 10px 0;
+}  

@@ -1,11 +1,5 @@
 @import "../global-variables.css";
 
-:root {
-    --category-background-color: rgba(255, 255, 255, 0.3);
-}
-
-
-
 .board__container {
     display: flex;
     align-items: flex-start;
@@ -59,7 +53,7 @@
     width: 300px;
     font-size: 1.05em;
     font-weight: bold;
-    background: var(--category-background-color);
+    background: var(--semi-transparent-color);
     padding: 10px;
 }
 
@@ -68,7 +62,7 @@
     height: fit-content;
     max-height: 100%;
     border-radius: 15px;
-    background: var(--category-background-color);
+    background: var(--semi-transparent-color);
     padding: 10px;
 }
 

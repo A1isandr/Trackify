@@ -2,7 +2,10 @@
     --primary-color: #9AC9FFFF;
     --secondary-color: #000000;
     --semi-transparent-color: rgba(255, 255, 255, 0.3);
+    --white-color: #ffffff;
 
-    --button-hover-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
-    --button-active-shadow: inset 3px 3px 10px rgba(0, 0, 0, 0.1);
+    --primary-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+    --primary-inset-shadow: inset 3px 3px 10px rgba(0, 0, 0, 0.1);
+    --secondary-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+    --secondary-inset-shadow: inset 5px 5px 10px rgba(0, 0, 0, 0.1);
 }
