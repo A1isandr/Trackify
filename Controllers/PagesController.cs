@@ -2,6 +2,7 @@
 
 namespace Trackify.Controllers;
 
+[ApiController]
 public class PagesController : Controller
 {
     [HttpGet("/")]
@@ -10,14 +11,13 @@ public class PagesController : Controller
         return PhysicalFile(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "index.html"), "text/html");
     }
     
-    [HttpGet("/authorize")]
+    [HttpGet("auth")]
     public IActionResult Authorize()
     {
         return PhysicalFile(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "authorize.html"), "text/html");
     }
-
-    // Доска или панель
-    [HttpGet("/board")]
+    
+    [HttpGet("board")]
     public IActionResult Board()
     {
         return PhysicalFile(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "board.html"), "text/html");
