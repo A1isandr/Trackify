@@ -9,9 +9,10 @@ public sealed class ApplicationContext : DbContext
     
     public DbSet<User> Users { get; set; } = null!;
     public DbSet<Board> Boards { get; set; } = null!;
+    public DbSet<Category> Categories { get; set; } = null!;
+    public DbSet<Card> Cards { get; set; } = null!;
 
-    public ApplicationContext(
-        IConfiguration configuration)
+    public ApplicationContext(IConfiguration configuration)
     {
         _configuration = configuration;
         

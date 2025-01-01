@@ -19,7 +19,6 @@ public class Program
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
         
-        builder.Services.AddAuthorization();
         builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             .AddJwtBearer(options =>
             {
@@ -35,6 +34,8 @@ public class Program
                 };
             });
         
+        builder.Services.AddAuthorization();
+        
         var app = builder.Build();
         
         if (app.Environment.IsDevelopment())
@@ -44,8 +45,10 @@ public class Program
         }
 
         app.UseHttpsRedirection();
+        
         app.UseAuthentication();
         app.UseAuthorization();
+        
         app.MapControllers();
         app.UseStaticFiles();
         

@@ -1,14 +1,30 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Trackify.Models;
+using Trackify.Services.Interfaces;
+// ReSharper disable ReplaceWithPrimaryConstructorParameter
 
 namespace Trackify.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class UsersController : Controller
+[Authorize]
+public class UsersController(IUserService userService) : Controller
 {
+    private readonly IUserService _userService = userService;
     
-    public IActionResult Index()
+    [HttpPost("create")]
+    [AllowAnonymous]
+    public IActionResult Create([FromBody] CreateUserRequest request)
     {
-        return View();
+        try
+        {
+            _userService.CreateAsync(request);
+            return Accepted();
+        }
+        catch (Exception e)
+        {
+            return BadRequest(e.Message);
+        }
     }
 }

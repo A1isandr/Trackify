@@ -13,10 +13,10 @@ public static class ServiceCollectionExtensions
         services.AddTransient<ApplicationContext>();
         services.AddTransient<IPasswordHasher<User>, PasswordHasher<User>>();
 
+        services.AddTransient<ITokenService, TokenService>();
         services.AddTransient<IUserService, UserService>();
         services.AddTransient<IBoardService, BoardService>();
 
         services.AddTransient<PasswordHelper>();
-        services.AddTransient<JwtHelper>();
     }
 }

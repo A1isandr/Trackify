@@ -1,4 +1,8 @@
+'use strict';
+
 import {createCookie} from "../cookies.js";
+
+
 
 const loginFormContainer = document.querySelector('#login-form__container');
 const signupFormContainer = document.querySelector('#signup-form__container');
@@ -6,15 +10,13 @@ const signupFormContainer = document.querySelector('#signup-form__container');
 const goToSignupButton = document.querySelector('#go-to-signup');
 const goToLoginButton = document.querySelector('#go-to-login');
 
-goToSignupButton.addEventListener('click', () => {
-    loginFormContainer.classList.add('hidden');
-    signupFormContainer.classList.remove('hidden');
-});
+goToSignupButton.addEventListener('click', toggleForms);
+goToLoginButton.addEventListener('click', toggleForms);
 
-goToLoginButton.addEventListener('click', () => {
-    loginFormContainer.classList.remove('hidden');
-    signupFormContainer.classList.add('hidden');
-});
+function toggleForms() {
+    loginFormContainer.classList.toggle('hidden');
+    signupFormContainer.classList.toggle('hidden');
+} 
 
 
 
@@ -37,7 +39,7 @@ loginButton.addEventListener('click', () => {
     const username = document.querySelector('#login-username').value;
     const password = document.querySelector('#login-password').value;
 
-    fetch('/api/Auth/login', {
+    fetch('/api/Token/generate', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -53,10 +55,11 @@ loginButton.addEventListener('click', () => {
     .then(data => {
         console.log(data.accessToken);
         createCookie('accessToken', data.accessToken, 0);
-        window.location.href = '/board';
+        createCookie('username', data.username, 0);
+        window.location.href = '/';
     })
     .catch(error => {
-        alert('Ошибка авторизации' + error);
+        alert(error.message);
     });
 });
 
@@ -70,11 +73,11 @@ signupButton.addEventListener('click', () => {
     const passwordRepeat = document.querySelector('#signup-password-repeat').value;
     
     if (password !== passwordRepeat) {
-        alert('Пароли не совпадают');
+        alert('Passwords do not match');
         return;
     }
     
-    fetch('/api/Auth/register', {
+    fetch('/api/Users/create', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -85,13 +88,10 @@ signupButton.addEventListener('click', () => {
         if (!response.ok) {
             throw new Error(response.statusText);
         }
-        return response.json();
-    })
-    .then(data => {
-        alert('Успешная регистрация: ' + data.message);
+        
+        toggleForms();
     })
     .catch(error => {
-        console.error('Ошибка:', error);
-        alert('Ошибка регистрации' + error);
+        alert('Registration failed' + error);
     });
 });

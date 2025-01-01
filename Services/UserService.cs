@@ -13,11 +13,8 @@ public class UserService(ApplicationContext db, PasswordHelper passwordHelper) :
     
     public User? GetByUsername(string username) => 
         _db.Users.FirstOrDefault(u => u.Username == username);
-    
-    public User? GetById(int id) => 
-        _db.Users.FirstOrDefault(u => u.Id == id);
 
-    public void Create(RegisterUserRequest request)
+    public async Task CreateAsync(CreateUserRequest request)
     {
         ArgumentNullException.ThrowIfNull(request.Username);
         ArgumentNullException.ThrowIfNull(request.Password);
@@ -25,11 +22,11 @@ public class UserService(ApplicationContext db, PasswordHelper passwordHelper) :
         if (GetByUsername(request.Username) != null)
             throw new Exception("User with this username already exists");
 
-        var user = new User {Username = request.Username};
+        var user = new User { Username = request.Username };
         
         user.HashedPassword = _passwordHelper.GenerateHash(user, request.Password);
         
-        _db.Users.Add(user);
-        _db.SaveChanges();
+        await _db.Users.AddAsync(user);
+        await _db.SaveChangesAsync();
     }
 }

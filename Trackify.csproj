@@ -14,7 +14,12 @@
     </ItemGroup>
 
     <ItemGroup>
+      <Folder Include="Db\" />
       <Folder Include="wwwroot\styles\authorize\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="wwwroot\styles\index_old\main.css" />
     </ItemGroup>
 
 </Project>
