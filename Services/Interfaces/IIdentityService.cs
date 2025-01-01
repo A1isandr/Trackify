@@ -2,7 +2,7 @@
 
 namespace Trackify.Services.Interfaces;
 
-public interface ITokenService
+public interface IIdentityService
 {
     public string GenerateToken(GenerateTokenRequest request);
 }

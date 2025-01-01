@@ -1,3 +1,4 @@
+using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Trackify.Contexts;
@@ -13,28 +14,31 @@ public class Program
         var builder = WebApplication.CreateBuilder(
             new WebApplicationOptions { WebRootPath = "wwwroot" });
         
+        builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+            .AddJwtBearer(options =>
+            {
+                var config = builder.Configuration;
+                
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuer = true,
+                    ValidIssuer = config["JwtSettings:Issuer"],
+                    ValidateAudience = true,
+                    ValidAudience = config["JwtSettings:Audience"],
+                    ValidateLifetime = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(
+                        Encoding.UTF8.GetBytes(config["JwtSettings:Key"]!)),
+                    ValidateIssuerSigningKey = true
+                };
+            });
+        
+        builder.Services.AddAuthorization();
+        
         builder.Services.AddCommonServices();
         
         builder.Services.AddControllers();
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
-        
-        builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-            .AddJwtBearer(options =>
-            {
-                options.TokenValidationParameters = new TokenValidationParameters
-                {
-                    ValidateIssuer = true,
-                    ValidIssuer = AuthOptions.Issuer,
-                    ValidateAudience = true,
-                    ValidAudience = AuthOptions.Audience,
-                    ValidateLifetime = true,
-                    IssuerSigningKey = AuthOptions.GetSymmetricSecurityKey(),
-                    ValidateIssuerSigningKey = true,
-                };
-            });
-        
-        builder.Services.AddAuthorization();
         
         var app = builder.Build();
         

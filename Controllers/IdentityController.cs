@@ -14,16 +14,16 @@ namespace Trackify.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class TokenController(ITokenService tokenService) : Controller
+public class IdentityController(IIdentityService identityService) : Controller
 {
-    private readonly ITokenService _tokenService = tokenService;
+    private readonly IIdentityService _identityService = identityService;
     
-    [HttpPost("generate")]
-    public IActionResult Generate([FromBody] GenerateTokenRequest request)
+    [HttpPost("token")]
+    public IActionResult GenerateToken([FromBody] GenerateTokenRequest request)
     {
         try
         {
-            var token = _tokenService.GenerateToken(request);
+            var token = _identityService.GenerateToken(request);
             
             var response = new
             {

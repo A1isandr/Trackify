@@ -39,7 +39,7 @@ loginButton.addEventListener('click', () => {
     const username = document.querySelector('#login-username').value;
     const password = document.querySelector('#login-password').value;
 
-    fetch('/api/Token/generate', {
+    fetch('/api/Identity/token', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

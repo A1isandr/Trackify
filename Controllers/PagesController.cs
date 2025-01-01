@@ -9,7 +9,7 @@ public class PagesController : Controller
     public IActionResult Index()
     {
         return PhysicalFile(
-            Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "index.html"),
+            Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "pages/index.html"),
  "text/html");
     }
     
@@ -17,7 +17,7 @@ public class PagesController : Controller
     public IActionResult Auth()
     {
         return PhysicalFile(
-            Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "authorize.html"),
+            Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "pages/authorize.html"),
  "text/html");
     }
 }

@@ -13,7 +13,7 @@ public static class ServiceCollectionExtensions
         services.AddTransient<ApplicationContext>();
         services.AddTransient<IPasswordHasher<User>, PasswordHasher<User>>();
 
-        services.AddTransient<ITokenService, TokenService>();
+        services.AddTransient<IIdentityService, IdentityService>();
         services.AddTransient<IUserService, UserService>();
         services.AddTransient<IBoardService, BoardService>();
 
