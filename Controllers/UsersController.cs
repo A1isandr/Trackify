@@ -15,11 +15,11 @@ public class UsersController(IUserService userService) : Controller
     
     [HttpPost("create")]
     [AllowAnonymous]
-    public IActionResult Create([FromBody] CreateUserRequest request)
+    public async Task<IActionResult> Create([FromBody] CreateUserRequest request)
     {
         try
         {
-            _userService.CreateAsync(request);
+            await _userService.CreateAsync(request);
             return Accepted();
         }
         catch (Exception e)

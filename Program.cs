@@ -1,9 +1,11 @@
 using System.Text;
+using FluentValidation;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Trackify.Contexts;
 using Trackify.Helpers;
 using Trackify.Helpers.Extensions;
+using Trackify.Validation;
 
 namespace Trackify;
 
@@ -34,11 +36,13 @@ public class Program
         
         builder.Services.AddAuthorization();
         
-        builder.Services.AddCommonServices();
-        
         builder.Services.AddControllers();
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
+        
+        builder.Services.AddDbContext<ApplicationContext>();
+        builder.Services.AddCommonServices();
+        builder.Services.AddValidationServices();
         
         var app = builder.Build();
         
