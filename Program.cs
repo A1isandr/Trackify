@@ -1,8 +1,10 @@
 using System.Text;
 using FluentValidation;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Http.Features;
 using Microsoft.IdentityModel.Tokens;
 using Trackify.Contexts;
+using Trackify.Exceptions;
 using Trackify.Helpers;
 using Trackify.Helpers.Extensions;
 using Trackify.Validation;
@@ -17,7 +19,7 @@ public class Program
             new WebApplicationOptions { WebRootPath = "wwwroot" });
         
         builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-            .AddJwtBearer(options =>
+            .AddJwtBearer((options) =>
             {
                 var config = builder.Configuration;
                 
@@ -43,6 +45,22 @@ public class Program
         builder.Services.AddDbContext<ApplicationContext>();
         builder.Services.AddCommonServices();
         builder.Services.AddValidationServices();
+
+        builder.Services.AddProblemDetails(options =>
+        {
+            options.CustomizeProblemDetails = context =>
+            {
+                context.ProblemDetails.Instance =
+                    $"{context.HttpContext.Request.Method} {context.HttpContext.Request.Path}";
+                
+                context.ProblemDetails.Extensions.TryAdd("requestId", context.HttpContext.TraceIdentifier);
+
+                var activity = context.HttpContext.Features.Get<IHttpActivityFeature>()?.Activity;
+                context.ProblemDetails.Extensions.TryAdd("traceId", activity?.Id);
+            };
+        });
+        
+        builder.Services.AddExceptionHandlers();
         
         var app = builder.Build();
         
@@ -52,6 +70,8 @@ public class Program
             app.UseSwaggerUI();
         }
 
+        app.UseExceptionHandler();
+        
         app.UseHttpsRedirection();
         
         app.UseAuthentication();

@@ -1,6 +1,7 @@
 ﻿using FluentValidation;
 using Microsoft.AspNetCore.Identity;
 using Trackify.Contexts;
+using Trackify.Exceptions;
 using Trackify.Models;
 using Trackify.Services;
 using Trackify.Services.Interfaces;
@@ -27,5 +28,11 @@ public static class ServiceCollectionExtensions
         services.AddValidatorsFromAssemblyContaining<BoardValidator>();
         services.AddValidatorsFromAssemblyContaining<CardValidator>();
         services.AddValidatorsFromAssemblyContaining<CategoryValidator>();
+    }
+    
+    public static void AddExceptionHandlers(this IServiceCollection services)
+    {
+        services.AddExceptionHandler<ProblemExceptionHandler>();
+        services.AddExceptionHandler<ValidationExceptionHandler>();
     }
 }
