@@ -1,4 +1,5 @@
 ﻿using Trackify.Models;
+using Trackify.Models.DTOs;
 
 namespace Trackify.Services.Interfaces;
 

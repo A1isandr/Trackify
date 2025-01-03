@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Trackify.Models;
+using Trackify.Models.DTOs;
 using Trackify.Services.Interfaces;
 // ReSharper disable ReplaceWithPrimaryConstructorParameter
 

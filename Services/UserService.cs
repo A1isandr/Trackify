@@ -1,6 +1,7 @@
 ﻿using Trackify.Contexts;
 using Trackify.Helpers;
 using Trackify.Models;
+using Trackify.Models.DTOs;
 using Trackify.Services.Interfaces;
 
 namespace Trackify.Services;

@@ -6,6 +6,7 @@ using Microsoft.IdentityModel.Tokens;
 using Trackify.Contexts;
 using Trackify.Helpers;
 using Trackify.Models;
+using Trackify.Models.DTOs;
 using Trackify.Services;
 using Trackify.Services.Interfaces;
 // ReSharper disable ReplaceWithPrimaryConstructorParameter

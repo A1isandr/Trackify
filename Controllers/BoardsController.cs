@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Trackify.Contexts;
 using Trackify.Models;
+using Trackify.Models.DTOs;
 using Trackify.Services.Interfaces;
 // ReSharper disable ReplaceWithPrimaryConstructorParameter
 
