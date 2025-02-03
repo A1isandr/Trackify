@@ -23,9 +23,9 @@ public class IdentityService(
     
     private static readonly TimeSpan TokenExpirationMinutes = TimeSpan.FromMinutes(2);
     
-    public string GenerateToken(GenerateTokenRequest request)
+    public async Task<string> GenerateTokenAsync(GenerateTokenRequest request)
     {
-        var user = _userService.GetByUsername(request.Username);
+        var user = await _userService.GetByUsernameAsync(request.Username);
 
         if (user is null ||
             !_passwordHelper.VerifyPassword(user, user.HashedPassword!, request.Password))

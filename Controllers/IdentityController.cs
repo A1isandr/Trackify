@@ -20,11 +20,11 @@ public class IdentityController(IIdentityService identityService) : Controller
     private readonly IIdentityService _identityService = identityService;
     
     [HttpPost("token")]
-    public IActionResult GenerateToken([FromBody] GenerateTokenRequest request)
+    public async Task<IActionResult> GenerateToken([FromBody] GenerateTokenRequest request)
     {
         try
         {
-            var token = _identityService.GenerateToken(request);
+            var token = await _identityService.GenerateTokenAsync(request);
             
             var response = new
             {

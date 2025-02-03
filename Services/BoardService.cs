@@ -25,7 +25,7 @@ public class BoardService(ApplicationContext db, IUserService userService) : IBo
         ArgumentNullException.ThrowIfNull(request.Name);
         ArgumentNullException.ThrowIfNull(request.OwnerUsername);
         
-        var owner = _userService.GetByUsername(request.OwnerUsername);
+        var owner = await _userService.GetByUsernameAsync(request.OwnerUsername);
         
         if (owner is null)
             throw new Exception("User with this username does not exist");

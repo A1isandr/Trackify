@@ -5,5 +5,5 @@ namespace Trackify.Services.Interfaces;
 
 public interface IIdentityService
 {
-    public string GenerateToken(GenerateTokenRequest request);
+    public Task<string> GenerateTokenAsync(GenerateTokenRequest request);
 }
