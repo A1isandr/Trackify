@@ -12,113 +12,146 @@
     </head>
 
     <body>
-        <header>
-            <div class="header__container">
-                <section class="header__left">
-                    <div class="logo__container">
-                        <h2>Trackify</h2>
-                    </div>
-                </section>
+        <div id="wrapper">
+            <div id="content__container">
+                <header>
+                    <div class="header__container">
+                        <section class="header__left">
+                            <div class="logo__container">
+                                <h2>Trackify</h2>
+                            </div>
+                        </section>
 
-                <section class="header__center">
-                    <h3>Board 1</h3>
-                </section>
+                        <section class="header__center">
+                            <h3>Board 1</h3>
+                        </section>
 
-                <section class="header__right">
-                    <div class="profile-picture__container">
-                        <img src="assets/images/dev-profile-picture.jpg" alt="profile picture">
+                        <section class="header__right">
+                            <div class="profile-picture__container">
+                                <img src="assets/images/dev-profile-picture.jpg" alt="profile picture">
+                            </div>
+                        </section>
                     </div>
-                </section>
-            </div>
-        </header>
-        
-        <div class="overlay">
-            <aside>
-                <div class="menu__container">
-                    <div class="menu__bar">
-                        <section class="menu__bar-left">
-                            <button id="toggle-menu-button" class="toggle-menu-button bar__button">
+                </header>
+
+                <div class="overlay">
+                    <aside>
+                        <div class="menu__container">
+                            <div class="menu__bar">
+                                <section class="menu__bar-left">
+                                    <button id="toggle-menu-button" class="toggle-menu-button bar__button">
                                 <span class="material-symbols-rounded">
                                     thumbnail_bar
                                 </span>
-                            </button>
-                        </section>
-    
-                        <section class="menu__bar-right">
-                            <button id="search-button" class="bar__button">
+                                    </button>
+                                </section>
+
+                                <section class="menu__bar-right">
+                                    <button id="search-button" class="bar__button">
                                 <span class="material-symbols-rounded">
                                     search
                                 </span>
-                            </button>
-        
-                            <button id="new-board-button" class="bar__button">
+                                    </button>
+
+                                    <button id="new-board-button" class="bar__button">
                                 <span class="material-symbols-rounded">
                                     new_window
                                 </span>
-                            </button>
-                        </section>
-                    </div>
-    
-                    <div class="menu__list">
-                    </div>
-                </div>
-            </aside>
-    
-            <main>
-                <div class="board__container">
-                    <div class="board__control-bar">
-                        <button class="toggle-menu-button bar__button">
+                                    </button>
+                                </section>
+                            </div>
+
+                            <div class="menu__list">
+                            </div>
+                        </div>
+                    </aside>
+
+                    <main>
+                        <div class="board__container">
+                            <div class="board__control-bar">
+                                <button class="toggle-menu-button bar__button">
                             <span class="material-symbols-rounded">
                                 thumbnail_bar
                             </span>
-                        </button>
+                                </button>
 
-                        <button  class="bar__button">
+                                <button  class="bar__button">
                             <span class="material-symbols-rounded">
                                 search
                             </span>
-                        </button>
-                    </div>
-                    
-                    <div class="board">
-                        <div class="board__categories-container">
-                            <section class="category">
-                                <div class="category__bar">
-                                    <textarea class="category__title" placeholder="Category title" rows="1"></textarea>
-    
-                                    <button class="category__menu-button">
+                                </button>
+                            </div>
+
+                            <div class="board">
+                                <div class="board__categories-container">
+                                    <section class="category">
+                                        <div class="category__bar">
+                                            <textarea class="category__title" placeholder="Category title" rows="1"></textarea>
+
+                                            <button class="category__menu-button">
                                         <span class="material-symbols-rounded">
                                             more_horiz
                                         </span>
-                                    </button>
-                                </div>
-    
-                                <div class="category__task-list">
-                                    <div class="task">
-                                        <span class="task__title">Task 1</span>
-                                    </div>
-                                </div>
-    
-                                <button class="category__add-task-button">
+                                            </button>
+                                        </div>
+
+                                        <div class="category__task-list">
+                                            <div class="task">
+                                                <span class="task__title">Task 1</span>
+                                            </div>
+                                        </div>
+
+                                        <button class="category__add-task-button">
                                     <span class="material-symbols-rounded">
                                         note_stack_add
                                     </span>
-    
-                                    Add a card
-                                </button>
-                            </section>
-                        </div>
-    
-                        <button id="board__add-category-button">
+
+                                            Add a card
+                                        </button>
+                                    </section>
+                                </div>
+
+                                <button id="board__add-category-button">
                             <span class="material-symbols-rounded">
                                 add_box
                             </span>
-    
-                            Add category
-                        </button>
+
+                                    Add category
+                                </button>
+                            </div>
+                        </div>
+                    </main>
+                </div>
+            </div>
+            
+            <div id="modal__container">
+                <div id="new-board-modal" class="modal hidden">
+                    <div class="modal__window">
+                        <div class="modal__header">
+                            <button id="new-board-modal__close-button" class="modal__close-button">
+                                <span class="material-symbols-rounded">
+                                    close
+                                </span>
+                            </button>
+                        </div>
+
+                        <div class="modal__content">
+                            <div class="modal__title">
+                                <h3>New board</h3>
+                            </div>
+
+                            <div class="modal__body">
+                                <label for="new-board-modal__name">Board name</label>
+                                <input id="new-board-modal__name" type="text">
+                            </div>
+
+                            <div class="modal__actions">
+                                <button id="new-board-modal__confirm-button" class="modal__primary-button">Create</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </main>
+            </div>
         </div>
     </body>
 </html>

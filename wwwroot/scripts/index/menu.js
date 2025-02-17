@@ -1,9 +1,10 @@
 'use strict';
 
 import {readCookie} from "../cookies.js";
+import {openModal} from "./modal.js"; 
 
 
-
+const newBoardButton = document.querySelector('#new-board-button');
 const menuContainer = document.querySelector('aside');
 const menuList = document.querySelector('.menu__list');
 
@@ -72,3 +73,7 @@ export function updateMenu() {
         console.error('Error fetching boards:', error);
     })
 }
+
+newBoardButton.addEventListener('click', () => {
+    openModal('new-board-modal');
+});
